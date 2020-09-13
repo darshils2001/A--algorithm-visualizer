@@ -1,20 +1,5 @@
 import pygame
-
-COLORS = {
-    "RED": (255, 0, 0),
-    "GREEN": (0, 255, 0),
-    "BLUE": (0, 255, 0),
-    "YELLOW": (255, 255, 0),
-    "WHITE": (255, 255, 255),
-    "BLACK": (0, 0, 0),
-    "PURPLE": (128, 0, 128),
-    "ORANGE": (255, 165 ,0),
-    "GREY": (128, 128, 128),
-    "TURQUOISE": (64, 224, 208),
-}
-
-WIDTH = 800
-WIN = pygame.display.set_mode((WIDTH, WIDTH))
+import constants
 
 class Node:
     def __init(self, row, col, width, total_rows):
@@ -24,47 +9,47 @@ class Node:
         self.y = col * width
         self.width = width
         self.total_rows = total_rows
-        self.color = COLORS["WHITE"]
+        self.color = constants.WHITE
         self.neighbors = []
 
     def get_pos(self):
         return self.row, self.col
     
     def is_open(self):
-        return self.color == COLORS["GREEN"]
+        return self.color == constants.GREEN
     
     def is_closed(self):
-        return self.color == COLORS["RED"]
+        return self.color == constants.RED
     
     def is_start(self):
-	    return self.color == COLORS["ORANGE"]
+	    return self.color == constants.ORANGE
 
     def is_end(self):
-	    return self.color == COLORS["TURQUOISE"]
+	    return self.color == constants.TURQUOISE
     
     def is_barrier(self):
-	    return self.color == COLORS["BLACK"]
+	    return self.color == constants.BLACK
 
     def reset(self):
-	    self.color = COLORS["WHITE"]
+	    self.color = constants.WHITE
     
     def make_open(self):
-	    self.color = COLORS["GREEN"]
+	    self.color = constants.GREEN
 
     def make_closed(self):
-	    self.color = COLORS["RED"]
+	    self.color = constants.RED
     
     def make_start(self):
-	    self.color = COLORS["ORANGE"]
+	    self.color = constants.ORANGE
 
     def make_end(self):
-	    self.color = COLORS["TURQUOISE"]
+	    self.color = constants.TURQUOISE
     
     def make_barrier(self):
-	    self.color = COLORS["BLACK"]
+	    self.color = constants.BLACK
 
     def make_path(self):
-	    self.color = COLORS["PURPLE"]
+	    self.color = constants.PURPLE
     
     def draw(self, win):
         pygame.draw.rect(win, self.color, (self.x, self.y, self.width, self.width))

@@ -1,7 +1,7 @@
 import math
 import pygame
 from queue import PriorityQueue
-from node import COLORS, WIDTH, WIN, Node
+import constants
+import node
 
 pygame.display.set_caption("A* Algorithm Visualizer")
-
