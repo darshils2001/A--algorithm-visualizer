@@ -4,6 +4,7 @@ from queue import PriorityQueue
 import constants
 from node import Node
 from grid import make_grid, get_clicked_pos, draw
+from a_star_algorithm import a_star_algorithm
 
 pygame.display.set_caption("A* Algorithm Visualizer")
 
@@ -50,7 +51,11 @@ def main(win, rows, width):
             
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_SPACE and not started:
-                    pass
+                    for row in grid:
+                        for node in row:
+                            node.update_neighbors()
+                    
+                    a_star_algorithm(lambda: draw(win, grid, rows, width), grid, start, end)
     pygame.quit()
 
 # Uses Manhattan distance to calculate distance from current node to end node.
