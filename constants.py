@@ -11,5 +11,6 @@ ORANGE = (255, 165 ,0)
 GREY = (128, 128, 128)
 TURQUOISE = (64, 224, 208)
 
+ROWS = 50
 WIDTH = 800
 WIN = pygame.display.set_mode((WIDTH, WIDTH))

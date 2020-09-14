@@ -2,7 +2,7 @@ import pygame
 import constants
 
 class Node:
-    def __init(self, row, col, width, total_rows):
+    def __init__(self, row, col, width, total_rows):
         self.row = row
         self.col = col
         self.x = row * width
