@@ -43,6 +43,7 @@ def main(win, rows, width):
                 elif node == end:
                     end = None
             
+            # Start when spacebar is pressed
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_SPACE and start and end:
                     for row in grid:

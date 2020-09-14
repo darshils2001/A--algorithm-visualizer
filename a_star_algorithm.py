@@ -1,4 +1,3 @@
-import math
 import pygame
 from queue import PriorityQueue
 
@@ -25,6 +24,7 @@ def a_star_algorithm(draw, grid, start, end):
         cur = open_set.get()[2]
         open_set_hash.remove(cur)
 
+        # Draw shortest path
         if cur == end:
             reconstruct_path(came_from, end, draw)
             end.make_end()
