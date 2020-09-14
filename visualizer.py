@@ -1,6 +1,4 @@
-import math
 import pygame
-from queue import PriorityQueue
 import constants
 from node import Node
 from grid import make_grid, get_clicked_pos, draw
@@ -13,16 +11,12 @@ def main(win, rows, width):
     start = None
     end = None
     run = True
-    started = False
 
     while run:
         draw(win, grid, rows, width)
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 run = False
-            
-            if started:
-                continue
             
             # Left mouse button
             if pygame.mouse.get_pressed()[0]:
@@ -50,18 +44,17 @@ def main(win, rows, width):
                     end = None
             
             if event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_SPACE and not started:
+                if event.key == pygame.K_SPACE and start and end:
                     for row in grid:
                         for node in row:
-                            node.update_neighbors()
-                    
+                            node.update_neighbors(grid)
                     a_star_algorithm(lambda: draw(win, grid, rows, width), grid, start, end)
-    pygame.quit()
+                
+                if event.key == pygame.K_c:
+                    start = None
+                    end = None
+                    grid = make_grid(rows, width)
 
-# Uses Manhattan distance to calculate distance from current node to end node.
-def h(p1, p2):
-    x1, y1 = p1
-    x2, y2 = p2
-    return abs(x1 - x2) + abs(y1 - y2)
+    pygame.quit()
 
 main(constants.WIN, constants.ROWS, constants.WIDTH)
